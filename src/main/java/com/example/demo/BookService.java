@@ -19,14 +19,19 @@ public class BookService {
 	public List<Book> getBooks() {
 		return booksList;
 	}
-	
+
 	public Book getBookByID(int id) {
 		for (Book book : booksList) {
-			if(book.getId() == id) {
+			if (book.getId() == id) {
 				return book;
-			}	
+			}
 		}
 		return null;
 	}
-	
+
+	public Book addBook(Book book) {
+		booksList.add(book);
+		return book;
+	}
+
 }
