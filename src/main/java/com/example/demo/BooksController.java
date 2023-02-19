@@ -8,9 +8,11 @@ import java.util.List;
 import java.util.Scanner;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -34,5 +36,15 @@ public class BooksController {
 	@PostMapping("/books")
 	public Book addBook(@RequestBody Book book) {
 		return this.bookService.addBook(book);
+	}
+	
+	@DeleteMapping(value = "/books/{id}")
+	public Book deleteBookById(@PathVariable("id") int id) {
+		return this.bookService.deleteBookByID(id);
+	}
+	
+	@PutMapping("/books/{id}")
+	public Book updateBook(@RequestBody Book book, @PathVariable("id") int id) {
+		return this.bookService.updateBook(book, id);
 	}
 }
